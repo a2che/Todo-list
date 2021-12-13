@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,600&display=swap')
+// $font:		
+// $primary-color: 
+// $target-color: 
+// $primary-shadow : 
+// $secondary-shadow: 
+$transition-speed: 0.2s
+
+
+=font($family,$style,$weight,$size,$line-height,$color)
+	font-family: $family, sans-serif
+	font-style: $style
+	font-weight: $weight
+	font-size: $size
+	line-height: $line-height
+	color: $color
+=flex($justify,$wrap,$ai)
+	display: flex  
+	justify-content: $justify
+	flex-wrap: $wrap
+	align-items: $ai
+
+@mixin mediaSize($size) 
+	@if $size == xxl
+		@media (min-width: 1440px)
+			@content 
+
+	@else if $size == xl 
+		@media (max-width: 1440px)
+			@content  
+
+	@else if $size == lg 
+		@media (max-width: 1200px)
+			@content  
+
+	@else if $size == md 
+		@media (max-width: 768px)
+			@content
+			
+	@else if $size == sm 
+		@media (max-width: 576px)
+			@content
+	@else if $size == xs
+		@media (max-width: 375px)
+			@content
+	@else if $size == xxs
+		@media (max-width: 320px)
+			@content
+
+
+section.main
+	@include mediaSize(xxl) 
+		padding-left: calc(50% - 700px)
+		padding-right: calc(50% - 700px)
+
+	@include mediaSize(xl) 
+		padding-left: calc(50% - 580px)
+		padding-right: calc(50% - 580px)
+
+	@include mediaSize(lg) 
+		padding-left: calc(50% - 360px)
+		padding-right: calc(50% - 360px)
+	
+	@include mediaSize(md) 
+		padding-left: calc(50% - 260px)
+		padding-right: calc(50% - 260px)
+
+	@include mediaSize(sm) 
+		padding: 0 15px
+	@include mediaSize(xxs) 
+		padding: 0px 0px
+	
+
+body
+	margin: 0
+	background-color: #010920
+	+flex(center,nowrap,center)
+	flex-direction: column
+	height: 100vh
+h1,h2,h3,p 
+	margin: 0
+
+.flexSB
+	+flex(space-between,nowrap,center)
+
+
+main
+	background-color: #252E42
+	height: 581px
+	width: 420px
+	box-shadow: 0px 14px 34px rgba(0, 0, 0, 0.25)
+	padding: 30px
+	box-sizing: border-box
+	transition: $transition-speed
+	border-radius: 20px
+	position: relative
+	&:before
+		content: ' '
+		display: block
+		position: absolute   
+		top: 0
+		left: 4px
+		z-index: -2
+		height: 85px
+		width: 416px
+		background: #4F5565
+		border-radius: 20px
+		
+		transition: $transition-speed
+
+	&:after  
+		content: ' '
+		display: block
+		position: absolute   
+		top: 0
+		left: 2px
+		z-index: -2
+		height: 85px
+		width: 416px
+		background: #31394D
+		border-radius: 20px
+		transition: 0.4s
+	
+	&:hover:before
+		transform: rotate(-4.48deg)
+		width: 341px
+		top: -25px
+	&:hover:after
+		transform: rotate(-2.32deg)
+		width: 395px
+		top: -15px
+		
+	.title  
+		+font(Montserrat, normal, bold, 28px, 34px, #fff)
+	.addBtn
+		background: #FF8469
+		cursor: pointer
+		transition: $transition-speed
+		border-radius: 7px
+		padding: 5px 10px
+		border: none
+		+font(Montserrat, normal, normal, 14px, 14px, #fff)
+		&:hover 
+			background-color: #D95133
+
+.todos  
+	padding: 0
+	list-style: none
+.todo  
+	+flex(space-between, nowrap, center)
+	width: 100%
+	overflow: hidden
+
+	&__info
+		padding-left: 15px
+		width: 100%
+		+font(Montserrat, normal, 500, 16px, 20px, #fff)
+	&__title
+	&__descr
+		text-overflow: clip
+		white-space: nowrap
+		background: #4F5565
+		background: linear-gradient(to left, transparent 0%, #4F5565 30%, #4F5565 100%)
+		-webkit-background-clip: text
+		background-clip: text
+		color: transparent
+	&__checkbox
+		float: left
+
+
+
+.author__name
+	+font(Montserrat, normal, 500, 16px, 20px, #252E42)
+	margin-top: 30px
